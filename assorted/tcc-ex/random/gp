@@ -1,0 +1,4 @@
+#!/bin/bash
+
+gpcmd="set term png; set output \"$2\"; plot \"$1\" with impulse; quit"
+echo $gpcmd | gnuplot

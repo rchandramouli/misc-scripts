@@ -1,0 +1,239 @@
+
+mod.mo:     file format elf32-i386
+mod.mo
+architecture: i386, flags 0x00000011:
+HAS_RELOC, HAS_SYMS
+start address 0x00000000
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000000  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000000  00000000  00000000  00000034  2**2
+                  ALLOC
+  3 .rodata       00000069  00000000  00000000  00000034  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .mutable      000000be  00000000  00000000  0000009d  2**0
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .mute_array   00000010  00000000  00000000  0000015c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, DATA
+  6 .note.GNU-stack 00000000  00000000  00000000  0000016c  2**0
+                  CONTENTS, READONLY
+  7 .comment      00000030  00000000  00000000  0000016c  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+00000000 l    df *ABS*	00000000 mod.c
+00000000 l    d  .text	00000000 
+00000000 l    d  .data	00000000 
+00000000 l    d  .bss	00000000 
+00000000 l    d  .rodata	00000000 
+00000000 l     O .rodata	00000008 __func__.0
+00000000 l    d  .mutable	00000000 
+00000000 l     F .mutable	0000006a recurse
+0000001a l     O .rodata	00000006 __func__.1
+0000006a l     F .mutable	0000001d fun_x
+00000030 l     O .rodata	00000006 __func__.2
+00000087 l     F .mutable	00000037 chain
+00000000 l    d  .mute_array	00000000 
+00000000 l     O .mute_array	00000010 fptrs
+00000000 l    d  .note.GNU-stack	00000000 
+00000000 l    d  .comment	00000000 
+00000000         *UND*	00000000 printf
+
+
+Contents of section .rodata:
+ 0000 72656375 72736500 25733a20 72657665  recurse.%s: reve
+ 0010 72736520 3d202573 0a006675 6e5f7800  rse = %s..fun_x.
+ 0020 25733a20 676f7420 63616c6c 65640a00  %s: got called..
+ 0030 63686169 6e002573 3a206e6f 7720776f  chain.%s: now wo
+ 0040 756c6420 63616c6c 2066756e 5f780a00  uld call fun_x..
+ 0050 25733a20 72657475 726e6564 2066726f  %s: returned fro
+ 0060 6d206675 6e5f780a 00                 m fun_x..       
+Contents of section .mutable:
+ 0000 5589e583 ec08837d 08007508 8b450cc6  U......}..u..E..
+ 0010 0000eb54 8b4d0c8b 5508c745 fc0a0000  ...T.M..U..E....
+ 0020 0089d0ba 00000000 f775fc8d 42308801  .........u..B0..
+ 0030 83ec088b 450c4050 8b5508b8 cdcccccc  ....E.@P.U......
+ 0040 f7e289d0 c1e80350 e8b3ffff ff83c410  .......P........
+ 0050 83ec04ff 750c6800 00000068 08000000  ....u.h....h....
+ 0060 e8fcffff ff83c410 c9c35589 e583ec08  ..........U.....
+ 0070 83ec0868 1a000000 68200000 00e8fcff  ...h....h ......
+ 0080 ffff83c4 10c9c355 89e583ec 0883ec08  .......U........
+ 0090 68300000 00683600 0000e8fc ffffff83  h0...h6.........
+ 00a0 c410e8c3 ffffff83 ec086830 00000068  ..........h0...h
+ 00b0 50000000 e8fcffff ff83c410 c9c3      P.............  
+Contents of section .mute_array:
+ 0000 04000000 00000000 05000000 87000000  ................
+Contents of section .comment:
+ 0000 00474343 3a202847 4e552920 332e342e  .GCC: (GNU) 3.4.
+ 0010 33203230 30353032 32372028 52656420  3 20050227 (Red 
+ 0020 48617420 332e342e 332d3232 2e312900  Hat 3.4.3-22.1).
+Disassembly of section .rodata:
+
+00000000 <__func__.0>:
+   0:	72 65                	jb     67 <__func__.2+0x37>
+   2:	63 75 72             	arpl   %si,0x72(%ebp)
+   5:	73 65                	jae    6c <fun_x+0x2>
+   7:	00 25 73 3a 20 72    	add    %ah,0x72203a73
+   d:	65                   	gs
+   e:	76 65                	jbe    75 <fun_x+0xb>
+  10:	72 73                	jb     85 <fun_x+0x1b>
+  12:	65 20 3d 20 25 73 0a 	and    %bh,%gs:0xa732520
+	...
+
+0000001a <__func__.1>:
+  1a:	66                   	data16
+  1b:	75 6e                	jne    8b <chain+0x4>
+  1d:	5f                   	pop    %edi
+  1e:	78 00                	js     20 <__func__.1+0x6>
+  20:	25 73 3a 20 67       	and    $0x67203a73,%eax
+  25:	6f                   	outsl  %ds:(%esi),(%dx)
+  26:	74 20                	je     48 <__func__.2+0x18>
+  28:	63 61 6c             	arpl   %sp,0x6c(%ecx)
+  2b:	6c                   	insb   (%dx),%es:(%edi)
+  2c:	65 64 0a 00          	or     %fs:%gs:(%eax),%al
+
+00000030 <__func__.2>:
+  30:	63 68 61             	arpl   %bp,0x61(%eax)
+  33:	69 6e 00 25 73 3a 20 	imul   $0x203a7325,0x0(%esi),%ebp
+  3a:	6e                   	outsb  %ds:(%esi),(%dx)
+  3b:	6f                   	outsl  %ds:(%esi),(%dx)
+  3c:	77 20                	ja     5e <__func__.2+0x2e>
+  3e:	77 6f                	ja     af <chain+0x28>
+  40:	75 6c                	jne    ae <chain+0x27>
+  42:	64 20 63 61          	and    %ah,%fs:0x61(%ebx)
+  46:	6c                   	insb   (%dx),%es:(%edi)
+  47:	6c                   	insb   (%dx),%es:(%edi)
+  48:	20 66 75             	and    %ah,0x75(%esi)
+  4b:	6e                   	outsb  %ds:(%esi),(%dx)
+  4c:	5f                   	pop    %edi
+  4d:	78 0a                	js     59 <__func__.2+0x29>
+  4f:	00 25 73 3a 20 72    	add    %ah,0x72203a73
+  55:	65                   	gs
+  56:	74 75                	je     cd <chain+0x46>
+  58:	72 6e                	jb     c8 <chain+0x41>
+  5a:	65 64 20 66 72       	and    %ah,%fs:%gs:0x72(%esi)
+  5f:	6f                   	outsl  %ds:(%esi),(%dx)
+  60:	6d                   	insl   (%dx),%es:(%edi)
+  61:	20 66 75             	and    %ah,0x75(%esi)
+  64:	6e                   	outsb  %ds:(%esi),(%dx)
+  65:	5f                   	pop    %edi
+  66:	78 0a                	js     72 <fun_x+0x8>
+	...
+Disassembly of section .mutable:
+
+00000000 <recurse>:
+   0:	55                   	push   %ebp
+   1:	89 e5                	mov    %esp,%ebp
+   3:	83 ec 08             	sub    $0x8,%esp
+   6:	83 7d 08 00          	cmpl   $0x0,0x8(%ebp)
+   a:	75 08                	jne    14 <recurse+0x14>
+   c:	8b 45 0c             	mov    0xc(%ebp),%eax
+   f:	c6 00 00             	movb   $0x0,(%eax)
+  12:	eb 54                	jmp    68 <recurse+0x68>
+  14:	8b 4d 0c             	mov    0xc(%ebp),%ecx
+  17:	8b 55 08             	mov    0x8(%ebp),%edx
+  1a:	c7 45 fc 0a 00 00 00 	movl   $0xa,0xfffffffc(%ebp)
+  21:	89 d0                	mov    %edx,%eax
+  23:	ba 00 00 00 00       	mov    $0x0,%edx
+  28:	f7 75 fc             	divl   0xfffffffc(%ebp)
+  2b:	8d 42 30             	lea    0x30(%edx),%eax
+  2e:	88 01                	mov    %al,(%ecx)
+  30:	83 ec 08             	sub    $0x8,%esp
+  33:	8b 45 0c             	mov    0xc(%ebp),%eax
+  36:	40                   	inc    %eax
+  37:	50                   	push   %eax
+  38:	8b 55 08             	mov    0x8(%ebp),%edx
+  3b:	b8 cd cc cc cc       	mov    $0xcccccccd,%eax
+  40:	f7 e2                	mul    %edx
+  42:	89 d0                	mov    %edx,%eax
+  44:	c1 e8 03             	shr    $0x3,%eax
+  47:	50                   	push   %eax
+  48:	e8 b3 ff ff ff       	call   0 <recurse>
+  4d:	83 c4 10             	add    $0x10,%esp
+  50:	83 ec 04             	sub    $0x4,%esp
+  53:	ff 75 0c             	pushl  0xc(%ebp)
+  56:	68 00 00 00 00       	push   $0x0
+			57: R_386_32	.rodata
+  5b:	68 08 00 00 00       	push   $0x8
+			5c: R_386_32	.rodata
+  60:	e8 fc ff ff ff       	call   61 <recurse+0x61>
+			61: R_386_PC32	printf
+  65:	83 c4 10             	add    $0x10,%esp
+  68:	c9                   	leave  
+  69:	c3                   	ret    
+
+0000006a <fun_x>:
+  6a:	55                   	push   %ebp
+  6b:	89 e5                	mov    %esp,%ebp
+  6d:	83 ec 08             	sub    $0x8,%esp
+  70:	83 ec 08             	sub    $0x8,%esp
+  73:	68 1a 00 00 00       	push   $0x1a
+			74: R_386_32	.rodata
+  78:	68 20 00 00 00       	push   $0x20
+			79: R_386_32	.rodata
+  7d:	e8 fc ff ff ff       	call   7e <fun_x+0x14>
+			7e: R_386_PC32	printf
+  82:	83 c4 10             	add    $0x10,%esp
+  85:	c9                   	leave  
+  86:	c3                   	ret    
+
+00000087 <chain>:
+  87:	55                   	push   %ebp
+  88:	89 e5                	mov    %esp,%ebp
+  8a:	83 ec 08             	sub    $0x8,%esp
+  8d:	83 ec 08             	sub    $0x8,%esp
+  90:	68 30 00 00 00       	push   $0x30
+			91: R_386_32	.rodata
+  95:	68 36 00 00 00       	push   $0x36
+			96: R_386_32	.rodata
+  9a:	e8 fc ff ff ff       	call   9b <chain+0x14>
+			9b: R_386_PC32	printf
+  9f:	83 c4 10             	add    $0x10,%esp
+  a2:	e8 c3 ff ff ff       	call   6a <fun_x>
+  a7:	83 ec 08             	sub    $0x8,%esp
+  aa:	68 30 00 00 00       	push   $0x30
+			ab: R_386_32	.rodata
+  af:	68 50 00 00 00       	push   $0x50
+			b0: R_386_32	.rodata
+  b4:	e8 fc ff ff ff       	call   b5 <chain+0x2e>
+			b5: R_386_PC32	printf
+  b9:	83 c4 10             	add    $0x10,%esp
+  bc:	c9                   	leave  
+  bd:	c3                   	ret    
+Disassembly of section .mute_array:
+
+00000000 <fptrs>:
+   0:	04 00                	add    $0x0,%al
+   2:	00 00                	add    %al,(%eax)
+   4:	00 00                	add    %al,(%eax)
+			4: R_386_32	.mutable
+   6:	00 00                	add    %al,(%eax)
+   8:	05 00 00 00 87       	add    $0x87000000,%eax
+			c: R_386_32	.mutable
+   d:	00 00                	add    %al,(%eax)
+	...
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	00 47 43             	add    %al,0x43(%edi)
+   3:	43                   	inc    %ebx
+   4:	3a 20                	cmp    (%eax),%ah
+   6:	28 47 4e             	sub    %al,0x4e(%edi)
+   9:	55                   	push   %ebp
+   a:	29 20                	sub    %esp,(%eax)
+   c:	33 2e                	xor    (%esi),%ebp
+   e:	34 2e                	xor    $0x2e,%al
+  10:	33 20                	xor    (%eax),%esp
+  12:	32 30                	xor    (%eax),%dh
+  14:	30 35 30 32 32 37    	xor    %dh,0x37323230
+  1a:	20 28                	and    %ch,(%eax)
+  1c:	52                   	push   %edx
+  1d:	65 64 20 48 61       	and    %cl,%fs:%gs:0x61(%eax)
+  22:	74 20                	je     44 <__func__.2+0x14>
+  24:	33 2e                	xor    (%esi),%ebp
+  26:	34 2e                	xor    $0x2e,%al
+  28:	33 2d 32 32 2e 31    	xor    0x312e3232,%ebp
+  2e:	29 00                	sub    %eax,(%eax)

@@ -1,0 +1,6 @@
+# process-name:path:mem-limit:core-limit:fork-limit:heartbeat:malloc-trace:in-file:out-file:error-file:args-list
+
+myproc1:/home/rchandramouli/scripts/proc/test/myproc1::::yes:yes::::list of args
+myproc2:/home/rchandramouli/scripts/proc/test/myproc2::::yes:no::::
+myproc3:/home/rchandramouli/scripts/proc/test/myproc3::::yes:yes::::list of args
+myproc4:/home/rchandramouli/scripts/proc/test/myproc4::::yes:yes::::list of args
