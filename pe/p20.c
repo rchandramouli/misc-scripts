@@ -1,21 +1,20 @@
 #include <stdio.h>
 
-int main(int argc, char *argv[])
+#include "bnum.h"
+
+int main (int argc, char *argv[])
 {
-	char *p, fact100[] =
-		"933262154439441526816992388562667004"
-		"907159682643816214685929638952175999"
-		"932299156089414639761565182862536979"
-		"20827223758251185210916864";
-	int sum = 0;
+    bnum_t f;
+    int n;
 
-	p = fact100;
-	while (*p) {
-		sum += *p - '0';
-		p++;
-	}
+    f.nr = 1; f.digits[0] = 1;
 
-	printf("%d\n", sum);
+    for (n = 2; n <= 100; n++) {
+	bnum_multiply_num(&f, n);
+	bnum_dump(&f);
+    }
 
-	return 0;
+    printf("\n%d\n", bnum_digit_sum(&f));
+
+    return 0;
 }

@@ -1,41 +1,19 @@
 #include <stdio.h>
 
-#define FILL_SUBARRAY_BODY                              \
-    do {                                                \
-        if (!f) {                                       \
-            if (arr[i][j] < 0) {                        \
-                f1 = 0;                                 \
-            } else {                                    \
-                f1 = 1;                                 \
-            }                                           \
-            f = 1;                                      \
-            subarr[l = 0] = 0;                          \
-        }                                               \
-        if (!f1 && arr[i][j] >= 0) {                    \
-            f1 = 1;                                     \
-            subarr[++l] = 0;                            \
-        } else if (f1 && arr[i][j] < 0) {               \
-            f1 = 0;                                     \
-            subarr[++l] = 0;                            \
-        }                                               \
-        subarr[l] += arr[i][j];                         \
+#define MAX(a, b)   (((a) < (b)) ? (b): (a))
+
+#define APPLY_KADANE_ALGORITHM                         \
+    do {                                               \
+        if (!f) {                                      \
+            max_sf = max_end = arr[i][j];              \
+            f = 1;                                     \
+            continue;                                  \
+        }                                              \
+        max_end = MAX(arr[i][j], max_end + arr[i][j]); \
+        max_sf = MAX(max_end, max_sf);                 \
     } while (0)
 
 static long long int arr[2000][2000];
-static long long int subarr[2000];
-
-static long long int get_max_subarray (int len, long long int mx)
-{
-    long long int m = subarr[0], ps, s;
-    int i, j, k, f;
-
-    for (i = f = s = ps = 0; i < len; i++) {
-        if (!f && subarr[i] <= 0)
-            continue;
-        f = 1;
-        
-    return (m > mx ? m: mx);
-}
 
 static void generate_lagged_fib_array (int n)
 {
@@ -54,67 +32,58 @@ static void generate_lagged_fib_array (int n)
 
 int main (int argc, char *argv[])
 {
-    int i, j, l, k, f, f1, M;
-    long long int s, ps, mh, mv, md, mad;
+    int i, j, k, f, M;
+    long long int max_sf, max_end;
+    long long int mh, mv, md, mad;
 
     M = 2000;
     generate_lagged_fib_array(M);
 
     /* Sum all horizontal lines */
-    mh = 0;
-    for (i = 0; i < M; i++) {
-        f = 0;
-        for (j = 0; j < M; j++) {
-            FILL_SUBARRAY_BODY;
+    for (i = mh = 0; i < M; i++) {
+        for (j = f = 0; j < M; j++) {
+            APPLY_KADANE_ALGORITHM;
         }
-        mh = get_max_subarray(l, mh);
+        mh = MAX(mh, max_sf);
     }
     printf("Horizontal maximum: %lld\n", mh);
 
     /* Vertical */
-    mv = 0;
-    for (j = 0; j < M; j++) {
-        f = 0;
-        for (i = 0; i < M; i++) {
-            FILL_SUBARRAY_BODY;
+    for (j = mv = 0; j < M; j++) {
+        for (i = f = 0; i < M; i++) {
+            APPLY_KADANE_ALGORITHM;
         }
-        mv = get_max_subarray(l, mv);
+        mv = MAX(mv, max_sf);
     }
     printf("Vertical maximum: %lld\n", mv);
 
     /* Diagonals */
-    md = 0;
-    for (k = 0; k < M; k++) {
-        f = 0;
-        for (i = k, j = 0; i < M; i++, j++) {
-            FILL_SUBARRAY_BODY;
+    for (k = md = 0; k < M; k++) {
+        for (i = k, j = f = 0; i < M; i++, j++) {
+            APPLY_KADANE_ALGORITHM;
         }
-        md = get_max_subarray(l, md);
+        md = MAX(md, max_sf);
     }
     for (k = 0; k < M-1; k++) {
-        f = 0;
-        for (j = k+1, i = 0; j < M; i++, j++) {
-            FILL_SUBARRAY_BODY;
+        for (j = k+1, i = f = 0; j < M; i++, j++) {
+            APPLY_KADANE_ALGORITHM;
         }
-        md = get_max_subarray(l, md);
+        md = MAX(md, max_sf);
     }
     printf("Diagonal maximum: %lld\n", md);
 
     /* Anti-Diagonals */
-    mad = 0;
-    for (k = M-1; k >= 0; k--) {
-        f = 0;
-        for (i = 0, j = k; j >= 0; i++, j--) {
-            FILL_SUBARRAY_BODY;
+    for (k = M-1, mad = 0; k >= 0; k--) {
+        for (i = f = 0, j = k; j >= 0; i++, j--) {
+            APPLY_KADANE_ALGORITHM;
         }
-        mad = get_max_subarray(l, mad);
+        mad = MAX(mad, max_sf);
     }
     for (k = 1; k < M; k++) {
-        s = ps = f = 0;
-        for (i = k, j = M-1; i < M; i++, j--) {
-            FILL_SUBARRAY_BODY;
+        for (i = k, j = M-1, f = 0; i < M; i++, j--) {
+            APPLY_KADANE_ALGORITHM;
         }
-        mad = get_max_subarray(l, mad);
+        mad = MAX(mad, max_sf);
     }
     printf("Anti-Diagonal maximum: %lld\n", mad);
 
