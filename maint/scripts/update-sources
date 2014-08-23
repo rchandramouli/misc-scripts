@@ -1,0 +1,142 @@
+#!/bin/bash
+
+sources=/pub/sources/maint/conf/sources.lst
+logdir=/pub/sources/maint/log
+
+# PTR:REF -- function r#() { eval echo \$$(eval echo \$${1})${2}; }
+
+# Global logfiles
+Rlogfile=""
+Glogfile=""
+
+# $1 - repository type, $2 - repository path, ${*}
+function report_error()
+{
+    echo -n "${2} -- error "
+    echo -n "${1}-error: ${2} " >> ${Glogfile} 2>&1
+
+    shift 2
+
+    echo -e "$*"
+    echo "${*}" >> ${Glogfile} 2>&1
+}
+
+# $1 - repository type, $2 - repository path
+function report_ok()
+{
+    echo "${2} -- ok"
+    echo "${1}-ok: ${2}" >> ${Glogfile} 2>&1
+}
+
+# $1 - repository path, $2 - logfile
+function update_start()
+{
+    echo -e "---------------------------------------------------------------------------" >> ${2} 2>&1
+    echo -e "######## ${1}: updating at $(date)" >> ${2} 2>&1
+    echo -e "---------------------------------------------------------------------------" >> ${2} 2>&1
+}
+
+# $1 - repository path, $2 - logfile
+function update_end()
+{
+    echo -e "\n######## ${1}: update done at $(date)" >> ${2} 2>&1
+    echo -e "---------------------------------------------------------------------------\n\n" >> ${2} 2>&1
+}
+
+function git_update_hook()
+{
+    git pull >> ${Rlogfile} 2>&1
+
+    if [ $? -ne 0 ]; then
+	echo "error pulling GIT module, status=$?" >> ${Rlogfile} 2>&1
+	return -1
+
+    elif [ -f .gitmodules ]; then
+	# If submodules are present, pull them
+	git submodule foreach git pull origin master >> ${Rlogfile} 2>&1
+    fi
+
+    return $?
+}
+
+function svn_update_hook()
+{
+    svn cleanup >> ${Rlogfile} 2>&1
+    svn update $* >> ${Rlogfile} 2>&1
+    return $?
+}
+
+function hg_update_hook()
+{
+    hg pull >> ${Rlogfile} 2>&1
+    if [ $? -ne 0 ]; then
+	return $?
+    else
+	hg update >> ${Rlogfile} 2>&1
+    fi
+    return $?
+}
+
+function cvs_update_hook()
+{
+    cvs update >> ${Rlogfile} 2>&1
+    return $?
+}
+
+function bzr_update_hook()
+{
+    bzr pull >> ${Rlogfile} 2>&1
+    return $?
+}
+
+function update_repos()
+{
+    local type=${1}
+    local locs="${2}"
+    local opts
+
+    shift 2
+    opts="$*"
+
+    for loc in "${locs}"; do
+	update_start ${loc} ${Rlogfile}
+
+	pushd ${loc} >> ${Rlogfile} 2>&1
+
+	# Failure to move to the source directory, skip
+	if [ $? -ne 0 ]; then
+	    report_error ${repo} ${loc} "unable to change to source directory, skipping."
+	    continue
+	fi
+
+	${type}_update_hook ${loc} "${opts}" >> ${Rlogfile} 2>&1
+	if [ $? -eq 0 ]; then
+	    report_ok ${repo} ${loc}
+	else
+	    report_error ${repo} ${loc}
+	fi
+	popd >> ${Rlogfile} 2>&1
+
+	update_end ${loc} ${Rlogfile}
+    done
+}
+
+TSTAMP=$(date +%Y%m%d%H)
+Glogfile=${logdir}/update${TSTAMP}.log
+
+touch ${Glogfile}
+for repo in git cvs svn hg bzr; do
+    touch ${logdir}/${repo}${TSTAMP}.log
+done
+
+
+echo -e "Logging under ${logdir}/{git,cvs,svn,hg,bzr,update}${TSTAMP}.log\n"
+
+cat ${sources} | grep --invert ^# | grep --invert "^[ \t]*$" | \
+while read repo loc opts; do 
+    Rlogfile=${logdir}/${repo}${TSTAMP}.log
+    update_repos ${repo} ${loc} ${opts}
+done
+
+# Do www-view updates
+refresh-gitweb 2>&1 &>> ${logdir}/git${TSTAMP}.log

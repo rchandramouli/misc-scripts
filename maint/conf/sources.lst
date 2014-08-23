@@ -1,0 +1,220 @@
+# AI related stuffs
+git  /pub/sources/AI/avida
+
+# Boot loaders
+git  /pub/sources/boot-loaders/gpxe
+git  /pub/sources/boot-loaders/grub
+git  /pub/sources/boot-loaders/u-boot
+
+# Misc. tools
+git  /pub/sources/bti
+git  /pub/sources/buildroot
+
+# Checkpoint restart
+git  /pub/sources/CheckpointRestart/CR/linux-cr
+git  /pub/sources/CheckpointRestart/CR/lxc
+git  /pub/sources/CheckpointRestart/CR/tests-cr
+git  /pub/sources/CheckpointRestart/CR/user-cr
+svn  /pub/sources/CheckpointRestart/dmtcp
+
+# Compilers & tools
+cvs  /pub/sources/ccache
+hg   /pub/sources/compilers/crosstool-ng
+git  /pub/sources/compilers/decuda
+svn  /pub/sources/compilers/llvm
+svn  /pub/sources/compilers/llvm-gcc
+svn  /pub/sources/compilers/llvm/projects/compiler-rt
+svn  /pub/sources/compilers/llvm/tools/clang
+svn  /pub/sources/compilers/llvm/tools/clang/tools/extra
+git  /pub/sources/compilers/polly
+git  /pub/sources/compilers/orc
+git  /pub/sources/compilers/yasm
+hg   /pub/sources/gcc/gcd-nisse
+git  /pub/sources/gcc/gcc.git
+git  /pub/sources/gcc/glibc
+hg   /pub/sources/gcc/gmp
+git  /pub/sources/gcc/cloog
+
+hg   /pub/sources/gcc/superopt
+git  /pub/sources/gcc/gnulib
+cvs  /pub/sources/gcc/libplugin
+svn  /pub/sources/gcc/mpfr/trunk
+git  /pub/sources/gcc/piplib
+git  /pub/sources/gcc/polylib
+git  /pub/sources/gcc/ppl
+git  /pub/sources/gcc/sourceware/binutils
+git  /pub/sources/gcc/sourceware/dwz
+git  /pub/sources/gcc/sourceware/gdb
+git  /pub/sources/gcc/sourceware/glibc-ports
+git  /pub/sources/gcc/sourceware/newlib
+cvs  /pub/sources/gcc/bin-libs
+
+# Frontends
+git  /pub/sources/DB/phpmyadmin
+
+# LIBC stuffs
+svn  /pub/sources/eglibc
+
+# Emulators
+svn  /pub/sources/emulators/bochs
+git  /pub/sources/emulators/mdk
+git  /pub/sources/emulators/qemu
+hg   /pub/sources/emulators/ns-3-allinone
+hg   /pub/sources/emulators/ns-3-allinone/ns-3-dev
+bzr  /pub/sources/emulators/ns-3-allinone/pybindgen
+hg   /pub/sources/emulators/ns-3-allinone/netanim
+svn  /pub/sources/emulators/vbox
+
+# HDL stuffs
+svn  /pub/sources/hdl/ghdl
+svn  /pub/sources/hdl/gtkwave
+
+# Graphics
+svn  /pub/sources/graphics/blender
+svn  /pub/sources/graphics/geditor
+svn  /pub/sources/graphics/horde3d
+hg   /pub/sources/graphics/lux
+hg   /pub/sources/graphics/ogre
+svn  /pub/sources/graphics/gpuocelot
+git  /pub/sources/graphics/pycuda
+svn  /pub/sources/graphics/wxWidgets
+
+# Game engine stuffs
+git  /pub/sources/graphics/gengine-1/kiss3d
+git  /pub/sources/graphics/gengine-1/nalgebra
+git  /pub/sources/graphics/gengine-1/ncollide
+git  /pub/sources/graphics/gengine-1/nphysics
+git  /pub/sources/graphics/gengine-1/rust-sfml
+
+# Web-m
+git  /pub/sources/graphics/web-m/depot_tools
+git  /pub/sources/graphics/web-m/webmdshow
+git  /pub/sources/graphics/web-m/vp8-test-vectors
+git  /pub/sources/graphics/web-m/webmquicktime
+git  /pub/sources/graphics/web-m/libwebm
+git  /pub/sources/graphics/web-m/libwebp
+git  /pub/sources/graphics/web-m/udpsample
+git  /pub/sources/graphics/web-m/libvpx
+git  /pub/sources/graphics/web-m/libwebp-test-data
+git  /pub/sources/graphics/web-m/webp-wic-codec
+git  /pub/sources/graphics/web-m/webminspector
+
+# Visualization
+git  /pub/sources/graphics/gephi
+git  /pub/sources/graphics/networkx
+git  /pub/sources/graphics/graphviz
+git  /pub/sources/graphics/webdot
+
+# Codecs
+git  /pub/sources/graphics/codec/schroedinger
+svn  /pub/sources/graphics/codec/theora
+svn  /pub/sources/graphics/codec/Tremor
+svn  /pub/sources/graphics/codec/vorbis
+
+# RCS
+git  /pub/sources/git-repos
+git  /pub/sources/git-plot
+svn  /pub/sources/repo-viewers/viewvc  --username=guest --password=guest
+
+# Unsorted
+git  /pub/sources/irqbalance
+git  /pub/sources/jato
+git  /pub/sources/misc/jango
+git  /pub/sources/misc/parted
+git  /pub/sources/misc/SyntaxHighlighter
+git  /pub/sources/utils/usbutils
+git  /pub/sources/utils/usbview
+git  /pub/sources/pktgen/wireshark
+git  /pub/sources/gcc/sourceware/lvm2
+git  /pub/sources/gcc/sourceware/systemtap
+
+# Terminal
+git  /pub/sources/termwin/libevent
+git  /pub/sources/termwin/tmux
+
+# Misc. languages/tools
+git  /pub/sources/lang/coccinelle
+hg   /pub/sources/lang/go
+svn  /pub/sources/lang/ocaml
+svn  /pub/sources/lang/pcre
+#hg   /pub/sources/lang/pcre-ocaml
+git  /pub/sources/lang/spdiff
+git  /pub/sources/tinycc
+
+# Window manager
+git  /pub/sources/wm/awesome
+git  /pub/sources/wm/i3
+git  /pub/sources/wm/notion
+
+# X
+git  /pub/sources/X/wayland-pack/drm
+git  /pub/sources/X/wayland-pack/mesa
+git  /pub/sources/X/wayland-pack/kbproto
+git  /pub/sources/X/wayland-pack/cairo
+git  /pub/sources/X/wayland-pack/dri2proto
+git  /pub/sources/X/wayland-pack/libxkbcommon
+git  /pub/sources/X/wayland-pack/libX11
+git  /pub/sources/X/wayland-pack/macros
+git  /pub/sources/X/wayland-pack/glproto
+git  /pub/sources/X/wayland-pack/pixman
+git  /pub/sources/X/wayland-pack/xproto
+git  /pub/sources/X/wayland-pack/wayland
+
+# Security
+git  /pub/sources/security/fbac-lsm
+
+# Linux
+git  /pub/sources/linux/klibc
+git  /pub/sources/linux/linux-torvalds
+svn  /pub/sources/linux/linuxfirmwarekit
+cvs  /pub/sources/linux/ltp
+git  /pub/sources/linux/sparse
+
+# Filesystems
+git  /pub/sources/FS/gmailfs
+git  /pub/sources/FS/hamsterdb
+svn  /pub/sources/FS/opendedup-read-only
+
+# Math
+git  /pub/sources/math/matplotlib
+svn  /pub/sources/math/R
+
+# Biological systems
+# Openworm
+git  /pub/sources/bio/OpenWorm/OpenWorm
+git  /pub/sources/bio/OpenWorm/org.geppetto.simulation
+git  /pub/sources/bio/OpenWorm/org.geppetto.core
+git  /pub/sources/bio/OpenWorm/org.geppetto.model.sph
+git  /pub/sources/bio/OpenWorm/org.geppetto.frontend
+git  /pub/sources/bio/OpenWorm/org.geppetto.simulator.jlems
+git  /pub/sources/bio/OpenWorm/org.geppetto.simulator.sph
+git  /pub/sources/bio/OpenWorm/org.geppetto.solver.sph
+git  /pub/sources/bio/OpenWorm/org.geppetto.testbackend
+git  /pub/sources/bio/OpenWorm/org.geppetto.model.neuroml
+git  /pub/sources/bio/OpenWorm/org.geppetto
+git  /pub/sources/bio/OpenWorm/data-viz
+git  /pub/sources/bio/OpenWorm/ConfigurationGenerator
+git  /pub/sources/bio/OpenWorm/org.geppetto.samples
+git  /pub/sources/bio/OpenWorm/Smoothed-Particle-Hydrodynamics
+git  /pub/sources/bio/OpenWorm/SegWorm
+git  /pub/sources/bio/OpenWorm/CElegansNeuroML
+git  /pub/sources/bio/OpenWorm/org.geppetto.templatebundle
+git  /pub/sources/bio/OpenWorm/muscle_model
+git  /pub/sources/bio/OpenWorm/wormbrowser
+git  /pub/sources/bio/OpenWorm/org.geppetto.samplesimulator
+git  /pub/sources/bio/OpenWorm/org.geppetto.samplesimulation
+git  /pub/sources/bio/OpenWorm/org.geppetto.samplesolver
+git  /pub/sources/bio/OpenWorm/openwormbrowser-ios
+git  /pub/sources/bio/OpenWorm/HeuristicWorm
+git  /pub/sources/bio/OpenWorm/CyberElegans
+
+# Intel stuffs
+git  /pub/sources/intel/CLU
+
+# Assorted repos
+bzr  /pub/sources/FS/ecryptfs
+git  /pub/sources/OS/mirage
+git  /pub/sources/OS/XEN/xen-api
+git  /pub/sources/OS/XEN/xen-api-libs
+svn  /pub/sources/ompi-trunk
+svn  /pub/sources/powertop

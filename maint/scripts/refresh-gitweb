@@ -1,0 +1,31 @@
+#!/bin/bash
+
+source_list=/pub/sources/maint/conf/sources.lst
+wwwgitdir=/pub/sources/www-view/git
+wwwtrash=/pub/sources/www-view/trash
+
+# Cleanup trash
+rm -rf ${wwwtrash}/* 2>&1 &>/dev/null
+
+mkdir -p ${wwwgitdir}
+mkdir -p ${wwwtrash}
+
+if [ $? -eq 0 ]
+then
+    mv -f ${wwwgitdir}/* ${wwwtrash} 2>&1 &> /dev/null
+    pushd ${wwwgitdir} 2>&1 &> /dev/null
+
+    for repo in $(cat ${source_list} | grep ^git | cut -f2- -d" ")
+    do
+	linkname=$(echo ${repo} | sed 's/\/pub\/sources\///g')
+	mkdir -p $(dirname ${linkname})
+	ln -s  ${repo}/.git ${linkname}
+    done
+
+    popd 2>&1 &> /dev/null
+else
+    echo "Failed to access ${wwwgitdir}, aborting."
+    exit -1
+fi
+
+
