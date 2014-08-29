@@ -37,8 +37,6 @@ agda-mode					install
 agda-stdlib					install
 agda-stdlib-doc					install
 aglfn						install
-aide-common					install
-aide-dynamic					install
 aisleriot					install
 akonadi-backend-mysql				install
 akonadi-server					install
@@ -507,6 +505,8 @@ elasticache					install
 elbcli						install
 electric					install
 elementary-icon-theme				install
+elinks						install
+elinks-data					install
 elks-libc					install
 elmer						install
 elmer-common					install
@@ -549,15 +549,21 @@ espeak						install
 espeak-data:amd64				install
 ess						install
 esys-particle					install
+etckeeper					install
 ethtool						install
 etsf-io						install
 euca2ools					install
 evernote-mode					install
 evince						install
 evince-common					install
+evolution					install
+evolution-common				install
 evolution-data-server				install
 evolution-data-server-common			install
 evolution-data-server-online-accounts		install
+evolution-dev					install
+evolution-indicator				install
+evolution-plugins				install
 example-content					install
 exfat-fuse					install
 exfat-utils					install
@@ -923,12 +929,15 @@ gir1.2-ebook-1.2				install
 gir1.2-ebookcontacts-1.2			install
 gir1.2-edataserver-1.2				install
 gir1.2-freedesktop				install
+gir1.2-gconf-2.0				install
 gir1.2-gdata-0.0				install
+gir1.2-gdesktopenums-3.0			install
 gir1.2-gdkpixbuf-2.0				install
 gir1.2-ges-1.0					install
 gir1.2-glib-2.0					install
 gir1.2-gmenu-3.0				install
 gir1.2-gnomebluetooth-1.0			install
+gir1.2-gnomedesktop-3.0				install
 gir1.2-gnomekeyring-1.0				install
 gir1.2-goa-1.0					install
 gir1.2-gst-plugins-base-1.0			install
@@ -1103,6 +1112,7 @@ grub-pc-bin					install
 grub2-common					install
 gscan2pdf					install
 gsettings-desktop-schemas			install
+gsettings-desktop-schemas-dev			install
 gsettings-ubuntu-schemas			install
 gsfonts						install
 gsfonts-other					install
@@ -1515,6 +1525,7 @@ libasyncns0:i386				install
 libatasmart4:amd64				install
 libatk-adaptor:amd64				install
 libatk-bridge2.0-0:amd64			install
+libatk-bridge2.0-dev:amd64			install
 libatk-wrapper-java				install
 libatk-wrapper-java-jni:amd64			install
 libatk1.0-0:amd64				install
@@ -1701,6 +1712,7 @@ libcairo2-dev					install
 libcairomm-1.0-1:amd64				install
 libcamd2.3.1:amd64				install
 libcamel-1.2-45					install
+libcamel1.2-dev					install
 libcanberra-gtk-module:amd64			install
 libcanberra-gtk0:amd64				install
 libcanberra-gtk3-0:amd64			install
@@ -1733,10 +1745,8 @@ libcext0:amd64					install
 libcf0						install
 libcfitsio3:amd64				install
 libcfitsio3-dev					install
-libcg:amd64					install
 libcgal-dev					install
 libcgal10					install
-libcggl:amd64					install
 libcgi-session-perl				install
 libcgmanager0:amd64				install
 libcgmanager0:i386				install
@@ -1835,13 +1845,7 @@ libcrystalhd3:amd64				install
 libcsiro0					install
 libcsound64-6.0					install
 libcsparse3.1.2:amd64				install
-libcublas5.5:amd64				install
-libcuda1-331-updates				install
-libcudart5.5:amd64				install
 libcue1						install
-libcufft5.5:amd64				install
-libcufftw5.5:amd64				install
-libcuinj64-5.5:amd64				install
 libcups2:amd64					install
 libcups2:i386					install
 libcupscgi1:amd64				install
@@ -1849,13 +1853,11 @@ libcupsfilters1:amd64				install
 libcupsimage2:amd64				install
 libcupsmime1:amd64				install
 libcupsppdc1:amd64				install
-libcurand5.5:amd64				install
 libcurl3:amd64					install
 libcurl3-gnutls:amd64				install
 libcurl3-nss:amd64				install
 libcurl4-gnutls-dev:amd64			install
 libcurses-perl					install
-libcusparse5.5:amd64				install
 libcv-dev:amd64					install
 libcvector2:amd64				install
 libcvector2-dev:amd64				install
@@ -1948,16 +1950,21 @@ libdvdread4:amd64				install
 libdw1:amd64					install
 libeb16:amd64					install
 libebackend-1.2-7				install
+libebackend1.2-dev				install
 libebml4:amd64					install
 libebook-1.2-14					install
 libebook-contacts-1.2-0				install
+libebook-contacts1.2-dev			install
+libebook1.2-dev					install
 libecal-1.2-16					install
 libecj-java					install
 libecj-java-gcj					install
 libecryptfs0					install
 libedata-book-1.2-20				install
+libedata-book1.2-dev				install
 libedata-cal-1.2-23				install
 libedataserver-1.2-18				install
+libedataserver1.2-dev				install
 libedit2:amd64					install
 libeditline0					install
 libegl1-mesa:amd64				install
@@ -1998,6 +2005,7 @@ libevdocument3-4				install
 libevent-2.0-5:amd64				install
 libevocosm-4.0-4				install
 libevocosm-dev					install
+libevolution					install
 libevview3-3					install
 libewf2						install
 libexcalibur-logkit-java			install
@@ -2132,6 +2140,7 @@ libfribidi0:amd64				install
 libfriends0:amd64				install
 libfrog1					install
 libfs6:amd64					install
+libfsplib0					install
 libftdi1:amd64					install
 libftgl2:amd64					install
 libfuntools1:amd64				install
@@ -2163,6 +2172,8 @@ libgcj14-dev:amd64				install
 libgck-1-0:amd64				install
 libgconf-2-4:amd64				install
 libgconf2-4:amd64				install
+libgconf2-dev					install
+libgconf2-doc					install
 libgconf2.0-cil					install
 libgconfmm-2.6-1c2				install
 libgcr-3-common					install
@@ -2320,6 +2331,7 @@ libgmt4						install
 libgnome-bluetooth11				install
 libgnome-control-center1			install
 libgnome-desktop-3-7				install
+libgnome-desktop-3-dev				install
 libgnome-keyring-common				install
 libgnome-keyring0:amd64				install
 libgnome-menu-3-0				install
@@ -2415,6 +2427,7 @@ libgtextutils0:amd64				install
 libgtk-3-0:amd64				install
 libgtk-3-bin					install
 libgtk-3-common					install
+libgtk-3-dev					install
 libgtk-3-doc					install
 libgtk-vnc-2.0-0				install
 libgtk2-ex-podviewer-perl			install
@@ -2428,6 +2441,11 @@ libgtk2.0-cil					install
 libgtk2.0-common				install
 libgtk2.0-dev					install
 libgtkglext1					install
+libgtkhtml-4.0-0				install
+libgtkhtml-4.0-common				install
+libgtkhtml-4.0-dev				install
+libgtkhtml-editor-4.0-0				install
+libgtkhtml-editor-4.0-dev			install
 libgtkimageview0				install
 libgtkmm-2.4-1c2a:amd64				install
 libgtkmm-3.0-1:amd64				install
@@ -2505,7 +2523,6 @@ libhttpmime-java				install
 libhud2:amd64					install
 libhunspell-1.3-0:amd64				install
 libhwloc-dev:amd64				install
-libhwloc-plugins				install
 libhwloc5:amd64					install
 libhx509-5-heimdal:amd64			install
 libhyphen0					install
@@ -2590,6 +2607,7 @@ libjava3d-java					install
 libjava3d-jni					install
 libjavascriptcoregtk-1.0-0:amd64		install
 libjavascriptcoregtk-3.0-0:amd64		install
+libjavascriptcoregtk-3.0-dev			install
 libjaxen-java					install
 libjaxp1.3-java					install
 libjbig-dev:amd64				install
@@ -2833,6 +2851,7 @@ libmagickwand5:amd64				install
 libmagics++-data				install
 libmagplus3:amd64				install
 libmail-sendmail-perl				install
+libmail-spf-perl				install
 libmailtools-perl				install
 libmailtransport4				install
 libmaloc1					install
@@ -2977,6 +2996,7 @@ libnet-ip-perl					install
 libnet-libidn-perl				install
 libnet-smtp-ssl-perl				install
 libnet-ssleay-perl				install
+libnetaddr-ip-perl				install
 libnetcdf-dev					install
 libnetcdfc++4					install
 libnetcdfc7					install
@@ -3010,14 +3030,13 @@ libnotify-bin					install
 libnotify4:amd64				install
 libnova-0.14-0:amd64				install
 libnova-dev					install
-libnppc5.5:amd64				install
-libnppi5.5:amd64				install
-libnpps5.5:amd64				install
 libnspr4:amd64					install
 libnspr4-0d:amd64				install
+libnspr4-dev					install
 libnss-mdns:amd64				install
 libnss3:amd64					install
 libnss3-1d:amd64				install
+libnss3-dev:amd64				install
 libnss3-nssdb					install
 libntdb1:amd64					install
 libntrack-qt4-1					install
@@ -3027,10 +3046,6 @@ libnumber-bytes-human-perl			install
 libnumber-compare-perl				install
 libnux-4.0-0					install
 libnux-4.0-common				install
-libnvtoolsext1:amd64				install
-libnvtt-dev					install
-libnvtt2:amd64					install
-libnvvm2:amd64					install
 liboasis3-0d:amd64				install
 liboasis3-dev					install
 liboauth-signpost-java				install
@@ -3280,6 +3295,7 @@ libproxy-tools					install
 libproxy1:amd64					install
 libproxy1-plugin-gsettings:amd64		install
 libproxy1-plugin-networkmanager:amd64		install
+libpst4:amd64					install
 libpstoedit0c2a					install
 libptexenc1					install
 libpthread-stubs0-dev:amd64			install
@@ -3617,6 +3633,7 @@ libsdl1.2-dev					install
 libsdl1.2debian:amd64				install
 libseccomp2:amd64				install
 libsecret-1-0:amd64				install
+libsecret-1-dev					install
 libsecret-common				install
 libselinux1:amd64				install
 libselinux1:i386				install
@@ -3694,6 +3711,7 @@ libsoundtouch-dev				install
 libsoundtouch0:amd64				install
 libsoup-gnome2.4-1:amd64			install
 libsoup2.4-1:amd64				install
+libsoup2.4-dev					install
 libsource-highlight-common			install
 libsource-highlight4				install
 libsox-fmt-alsa:amd64				install
@@ -3840,7 +3858,6 @@ libtheora0:amd64				install
 libthepeg-dev					install
 libthepeg15:amd64				install
 libthreadweaver4				install
-libthrust-dev					install
 libthumbnailer0:amd64				install
 libthunarx-2-0					install
 libticcutils2					install
@@ -3873,6 +3890,7 @@ libtorch3c2					install
 libtorque2					install
 libtotem-plparser18				install
 libtotem0					install
+libtre5:amd64					install
 libtree-dagnode-perl				install
 libtry-tiny-perl				install
 libts-0.0-0:amd64				install
@@ -3938,7 +3956,6 @@ libvamp-hostsdk3:amd64				install
 libvamsas-client-java				install
 libvariable-magic-perl				install
 libvcdinfo0					install
-libvdpau-dev:amd64				install
 libvdpau1:amd64					install
 libvecmath-java					install
 libvibrant6b:amd64				install
@@ -3977,6 +3994,7 @@ libwacom2:amd64					install
 libwavpack1:amd64				install
 libwayland-client0:amd64			install
 libwayland-cursor0:amd64			install
+libwayland-dev					install
 libwayland-egl1-mesa:amd64			install
 libwayland-server0:amd64			install
 libwbclient0:amd64				install
@@ -3989,6 +4007,8 @@ libwebkitgtk-1.0-0:amd64			install
 libwebkitgtk-1.0-common				install
 libwebkitgtk-3.0-0:amd64			install
 libwebkitgtk-3.0-common				install
+libwebkitgtk-3.0-dev				install
+libwebkitgtk-common-dev				install
 libwebp-dev:amd64				install
 libwebp5:amd64					install
 libwebpdemux1:amd64				install
@@ -4153,8 +4173,10 @@ libxine2-x					install
 libxinerama-dev:amd64				install
 libxinerama1:amd64				install
 libxinerama1:i386				install
+libxkbcommon-dev				install
 libxkbcommon-x11-0:amd64			install
 libxkbcommon0:amd64				install
+libxkbfile-dev:amd64				install
 libxkbfile1:amd64				install
 libxklavier16					install
 libxm4:amd64					install
@@ -4237,6 +4259,7 @@ libyaml-libyaml-perl				install
 libyaml-perl					install
 libyaml-tiny-perl				install
 libyelp0					install
+libytnef0:amd64					install
 libzbar0					install
 libzeitgeist-1.0-1				install
 libzeitgeist-2.0-0:amd64			install
@@ -4296,7 +4319,6 @@ linux-image-3.13.0-34-generic			install
 linux-image-3.13.0-35-generic			install
 linux-image-3.13.0-35-lowlatency		install
 linux-image-extra-3.13.0-24-generic		install
-linux-image-extra-3.13.0-34-generic		install
 linux-image-extra-3.13.0-35-generic		install
 linux-image-generic				install
 linux-image-lowlatency				install
@@ -4490,6 +4512,7 @@ mustang						install
 mydumper					install
 mypaint						install
 mypaint-data					install
+myrepos						install
 myspell-en-au					install
 myspell-en-gb					install
 myspell-en-za					install
@@ -4537,7 +4560,6 @@ nifti-bin					install
 njplot						install
 notify-osd					install
 notify-osd-icons				install
-nouveau-firmware				install
 ntfs-3g						install
 ntfs-3g-dev					install
 ntpdate						install
@@ -4545,19 +4567,6 @@ ntrack-module-libnl-0				install
 nux-tools					install
 nvclock						install
 nvclock-gtk					install
-nvidia-cg-dev:amd64				install
-nvidia-cg-toolkit				install
-nvidia-cuda-dev					install
-nvidia-cuda-doc					install
-nvidia-cuda-gdb					install
-nvidia-cuda-toolkit				install
-nvidia-libopencl1-331-updates			install
-nvidia-opencl-dev:amd64				install
-nvidia-opencl-icd-331-updates			install
-nvidia-profiler					install
-nvidia-settings					install
-nvidia-settings-updates				install
-nvidia-visual-profiler				install
 nypatchy					install
 oasis3						install
 oasis3-examples					install
@@ -4637,7 +4646,6 @@ oneconf-common					install
 oneliner-el					install
 openbabel					install
 openbsd-inetd					install
-opencl-headers					install
 openclipart-svg					install
 opencryptoki					install
 openjade					install
@@ -5599,6 +5607,7 @@ rawtherapee					install
 rawtherapee-data				install
 raxml						install
 rdesktop					install
+re2c						install
 readline-common					install
 readseq						install
 realpath					install
@@ -5689,6 +5698,7 @@ ruby-fusefs					install
 ruby1.9.1					install
 ruby1.9.1-dev					install
 run-one						install
+sa-compile					install
 saga						install
 sailcut						install
 samba-common					install
@@ -5758,7 +5768,6 @@ scilab-sivp					install
 scilab-test					install
 scotch						install
 screen						install
-screen-resolution-extra				install
 screensaver-default-images			install
 scribus						install
 seabios						install
@@ -5818,6 +5827,8 @@ sound-theme-freedesktop				install
 soundstretch					install
 sox						install
 sp						install
+spamassassin					install
+spamc						install
 sparse						install
 spatialite-bin					install
 spatialite-gui					install
@@ -6248,6 +6259,7 @@ vistrails					install
 vkeybd						install
 vlc-data					install
 vlc-nox						install
+vnc4server					install
 vocproc						install
 vorbis-tools					install
 vowpal-wabbit					install
@@ -6267,6 +6279,7 @@ webapp-container				install
 webbrowser-app					install
 webkit-image-gtk				install
 weka						install
+weston						install
 wget						install
 whiptail					install
 whitedune					install
@@ -6324,6 +6337,7 @@ xaralx						install
 xaralx-svg					install
 xauth						install
 xaw3dg:amd64					install
+xbase-clients					install
 xbitmaps					install
 xbs						install
 xcftools					install
@@ -6416,7 +6430,6 @@ xserver-xorg-input-mouse			install
 xserver-xorg-input-synaptics			install
 xserver-xorg-input-vmmouse			install
 xserver-xorg-input-wacom			install
-xserver-xorg-video-all				install
 xserver-xorg-video-ati				install
 xserver-xorg-video-cirrus			install
 xserver-xorg-video-fbdev			install
@@ -6426,7 +6439,6 @@ xserver-xorg-video-mach64			install
 xserver-xorg-video-mga				install
 xserver-xorg-video-modesetting			install
 xserver-xorg-video-neomagic			install
-xserver-xorg-video-nouveau			install
 xserver-xorg-video-openchrome			install
 xserver-xorg-video-qxl				install
 xserver-xorg-video-r128				install
@@ -6452,6 +6464,7 @@ xul-ext-ubufox					install
 xul-ext-unity					install
 xul-ext-webaccounts				install
 xul-ext-websites-integration			install
+xutils-dev					install
 xz-utils					install
 yade						install
 yaml-mode					install
