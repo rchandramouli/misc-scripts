@@ -5,3 +5,9 @@
 108 - Diophantine reciprocals - I
 433 - Steps in euclid algorithm
 166 - 4x4 grid enumeration
+290 - D(n) == D(137n)
+
+/// MISC
+
+  1. Makefile to build all programs
+  2. Make programs runnable on Linux/Windows
