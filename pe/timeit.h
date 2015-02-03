@@ -67,6 +67,7 @@ timeit_timer_print (void)
     printf("\nELAPSED: (Wallclock: %ld.%ld.%ld s) (CPU: %lf s)\n",
            t_diff.tv_sec, t_diff.tv_usec/1000, (t_diff.tv_usec % 1000),
            (double)(__t_cpu_clock_peek - __t_cpu_clock_start)/CLOCKS_PER_SEC);
+    fflush(stdout);
 }
 
 static inline void __attribute__((unused))

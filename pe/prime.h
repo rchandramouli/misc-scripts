@@ -1,6 +1,8 @@
 #ifndef PRIME_H
 #define PRIME_H
 
+#include <math.h>
+
 #ifndef MAX_PTABLE_SIZE
 #define MAX_PTABLE_SIZE  30000
 #endif
@@ -35,7 +37,7 @@ static void __attribute__((unused)) generate_primes (void)
 
 static int __attribute__((unused)) is_prime (ptype_t n)
 {
-    ptype_t i, t;
+    ptype_t i, t, x;
 
     if (!(n & 1))
         return 0;
@@ -43,14 +45,18 @@ static int __attribute__((unused)) is_prime (ptype_t n)
     if (n < MAX_PTABLE_SIZE)
         return !pflag[n];
 
-    for (i = 0; i < nr_primes; i++)
+    t = sqrtl(n);
+    x = (t <= ptable[nr_primes-1]) ? t: ptable[nr_primes-1];
+
+    for (i = 0; ptable[i] <= x && i < nr_primes; i++)
         if ((n % ptable[i]) == 0)
             return 0;
 
-    t = sqrtl(n);
-    for (i = ptable[nr_primes-1] + 2; i <= t; i += 2)
-        if ((n % i) == 0)
-            return 0;
+    if (x < t) {
+        for (i = ptable[nr_primes-1] + 2; i <= t; i += 2)
+            if ((n % i) == 0)
+                return 0;
+    }
     return 1;
 }
 #endif /* PRIME_H */

@@ -1,28 +1,25 @@
+/*
+ * Find (x, y, z) such that x+y, y+z, z+x, x-y, y-z, x-z are squares.
+ *
+ * Let x+y = u^2, x-y = v^2, y+z = w^2
+ *
+ * y-z = u^2 - v^2 - w^2 = k1^2
+ * x+z = v^2 + w^2 = k2^2
+ * x-z = u^2 - w^2 = k3^2
+ *
+ * => k1^2 + k2^2 = u^2 = w^2 + k3^2
+ *
+ * Eg. 25^2 = 7^2 + 24^2 = 15^2 + 20^2
+ */
 #include <stdio.h>
 #include <math.h>
 
-#define FROM_BASE        5000
-#define MAX_TRIES        10000
+#include "mytypes.h"
+#include "timeit.h"
 
-#define is_a_square(x)   ((x) == (((int)sqrt(x))*((int)sqrt(x))))
-
-int main(int argc, char *argv[])
+int main (int argc, char *argv[])
 {
-  int x, y, z;
+    int 
 
-  for (z = FROM_BASE; z < MAX_TRIES; z+=2) {
-    for (y = z+2; y < MAX_TRIES; y+=2) {
-      for (x = y+1; x < MAX_TRIES; x++) {
-	if (is_a_square(x+y) && is_a_square(x-y) &&
-	    is_a_square(y+z) && is_a_square(y-z) &&
-	    is_a_square(x+z) && is_a_square(x-z)) {
-	  printf("(%d %d %d) %d\n", x, y, z, x+y+z);
-	  goto done;
-	}
-      }
-    }
-  }
-
- done:
-  return 0;
+    return 0;
 }

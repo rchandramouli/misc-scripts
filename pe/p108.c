@@ -1,31 +1,54 @@
+/*
+ * Number of solutions to Diophantine equation:
+ *       1/x + 1/y = 1/n
+ * TBD
+ */
 #include <stdio.h>
+#include <math.h>
 
-/* INCOMPLETE: Fixme, reduce time */
+#include "mytypes.h"
+#include "timeit.h"
 
-int main(int argc, char *argv[])
+#define MAX_PTABLE_SIZE   (100000)
+#define PTYPE_T_DEFINED
+#define ptype_t u64
+
+#include "prime.h"
+
+static int count_solutions (u64 n)
 {
-  int n, t, x, y, c, f = 0;
+    u64 i;
+    int c = 2;
 
-  scanf("%d", &t);
-  if (t <= 0) return -1;
+    if (is_prime(n))
+        return c;
 
-  for (n = t/2; ; n++) {
-    y = c = 0;
-    for (x = n+1; ; x++) {
-      if (((n*x) % (x-n))) continue;
-      y = (n*x)/(x-n);
-      if (x > y) break;
-      c++;
-      printf("\tn = %d, x = %d, y = %d\n", n, x, y);
+    for (i = n+2; i < 2*n; i++) {
+        if (((n*i) % (i-n)) == 0)
+            c++;
     }
-    if (c >= t) {
-      f = 1;
-      break;
+    return c;
+}
+
+int main (int argc, char *argv[])
+{
+    u64 i;
+    int j, m;
+
+    generate_primes();
+
+    i = 1;
+    m = 2;
+    while (1) {
+        j = count_solutions(i++);
+        if (m < j) {
+            m = j;
+            printf("m = %d at N = %I64d\n", m, i-1);
+            fflush(stdout);
+        }
+        if (j >= 1000)
+            break;
     }
-    printf("n = %d, c = %d\n", n, c);
-  }
-
-  if (f) printf("%d\n", n);
-
-  return 0;
+    printf("\nMax soln. for n = %I64d count = %d\n", i-1, j);
+    return 0;
 }
