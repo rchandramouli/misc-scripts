@@ -1,11 +1,12 @@
 #ifndef MYTYPES_H
 #define MYTYPES_H
 
-typedef unsigned long int u32;
-typedef unsigned long long int u64;
+#include <stdint.h>
+#include <inttypes.h>
 
-typedef long int s32;
-typedef long long int s64;
-
+typedef uint64_t u64;
+typedef uint32_t u32;
+typedef int64_t  s64;
+typedef int32_t  s32;
 
 #endif /* MYTYPES_H */

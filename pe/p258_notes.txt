@@ -1,0 +1,5 @@
+Lagged fibonacci:
+
+f(k, N) = 1, 0 <= k <= N
+        = f(k-N-1, N) + f(k-N, N), k > N
+

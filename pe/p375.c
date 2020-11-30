@@ -7,7 +7,7 @@
 #define MOD_PRN   (50515093UL)
 #define RND_SEED  (290797UL)
 
-#define MAX_RANGE (2000000000ULL)
+#define MAX_RANGE (2000000000UL)
 
 static char prn[MOD_PRN];
 static u32 loc[MOD_PRN];
@@ -34,6 +34,9 @@ int main (int argc, char *argv[])
         p = v;
     }
 
+    printf("Seed: %" PRIu64 ", loop at: %" PRIu64 ", S: %u, @: %u\n",
+	   (u64)RND_SEED, v, s, loc[v]);
+
     linkloc = loc[v];
     linkto = v;
     rep = s;
@@ -50,11 +53,11 @@ int main (int argc, char *argv[])
     M = MAX_RANGE / nr;
     R = MAX_RANGE % nr;
 
-    printf("Iter = %lu, value = %lu (link-loc: %lu), nr_elems = %lu\n",
+    printf("Iter = %" PRIu64 ", value = %" PRIu64 " (link-loc: %u), nr_elems = %u\n",
            rep, linkto, linkloc, nr);
-    printf("Smallest = %lu (loc: %lu), Largest = %lu (loc: %lu)\n",
+    printf("Smallest = %u (loc: %u), Largest = %u (loc: %u)\n",
            ord[0], loc[0], ord[nr-1], loc[nr-1]);
-    printf("Ring count = %I64u, remaining = %I64u\n",
+    printf("Ring count = %" PRIu64 ", remaining = %" PRIu64 "\n",
            MAX_RANGE/nr, MAX_RANGE % nr);
 
     sum = 0;
@@ -63,7 +66,7 @@ int main (int argc, char *argv[])
         if (loc[i] <= R)
             sum += ord[i];
     }
-    printf("First order sum = %I64u\n", sum);
+    printf("First order sum = %"PRIu64"\n", sum);
 
     timeit_timer_peek_and_print();
 

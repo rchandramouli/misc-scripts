@@ -7,6 +7,9 @@
 166 - 4x4 grid enumeration
 290 - D(n) == D(137n)
 
+626 - Counting Binary Matrices
+451 - Inverse Modulo Squares
+
 /// MISC
 
   1. Makefile to build all programs

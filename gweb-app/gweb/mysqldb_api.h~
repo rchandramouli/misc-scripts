@@ -1,8 +1,0 @@
-#ifndef MYSQLDB_API_H
-#define MYSQLDB_API_H
-
-/*
- * MySQL APIs for queries
- */
-
-#endif // MYSQLDB_API_H
